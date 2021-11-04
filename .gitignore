@@ -1,7 +1,11 @@
 /vendor
-/.idea
+.idea
 Homestead.json
 Homestead.yaml
 .env
 /node_modules
 composer.lock
+.vscode
+/docker/data/
+/docker/logs/
+.DS_Store

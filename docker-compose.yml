@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  phpreact:
+    container_name: phpreact_web
+    tty: true
+    stdin_open: true
+    image: "cimg/php:${CI_IMAGE_VERSION}"
+    user: ${USER_ID}:${GROUP_ID}
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - mariadb
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - mariadb
+    volumes:
+      - .:/home/circleci/project
+  mariadb:
+    container_name: phpreact_mariadb
+    image: "mariadb:${MARIADB_VERSION}"
+    restart: 'always'
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - ${MYSQL_DATA_DIR}:/var/lib/mysql
+      - ${MYSQL_LOG_DIR}:/var/log/mysql
+      - ${MYSQL_CONFIG_DIR}:/etc/mysql/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+

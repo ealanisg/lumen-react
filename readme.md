@@ -1,30 +1,36 @@
 Lumen (Laravel Micro Framework) + ReactJS + AdminLTE + Webpack Boilerplate
 
+Based on:
+https://github.com/Bikranshu/lumen-react.git
+Updated to latest versiones and configured to run inside of docker containers.
+Everything was tested in a Windows WSL2 environment.
+
 ## Prerequisites
 
-- PHP >= 7.2
+- PHP >= 7.4
 - OpenSSL PHP Extension
 - PDO PHP Extension
 - Mbstring PHP Extension
 - [NodeJs](https://nodejs.org/en/)
-- [Composer](https://getcomposer.org/download/) - Package manager for PHP
+- [Composer] v2 (https://getcomposer.org/download/) - Package manager for PHP
 - [NPM](https://npmjs.org/) - Node package manager
-- [MySQL](https://www.mysql.com/downloads/) - Relational database management system (RDBMS)
+- [MariaDB](https://www.mariadb.com/downloads/) - Relational database management system (RDBMS)
+- [Docker] - Using containers as a development envidornment
 
 
 ## Installation
 On the command prompt run the following commands:
 ```
- $ git clone https://github.com/Bikranshu/lumen-react.git
+ $ git clone https://github.com/ealanisg/lumen-react.git
  $ cd lumen-react
  $ composer install
- $ npm install
+ $ yarn install
  $ cp .env.example .env (edit it with your database information)
  $ php artisan jwt:secret
  $ php artisan migrate
  $ php artisan db:seed
- $ php -S localhost:8000 -t public/
- $ npm run watch
+ $ php -S 0.0.0.0:80 -t public/
+ $ yarn run watch
 ```
 Credential:
 - username: admin@admin.com
